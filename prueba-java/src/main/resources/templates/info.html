@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Sistema</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px 60px;
+            max-width: 800px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #f5576c;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(5px);
+        }
+
+        .info-label {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            word-break: break-word;
+        }
+
+        .icon {
+            font-size: 2em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .system-status {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .status-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 25px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .info-value {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Información del Sistema</h1>
+        
+        <div class="system-status">
+            <div class="status-icon">✅</div>
+            Sistema operando correctamente
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">
+                    <span class="icon">☕</span>Versión de Java
+                </div>
+                <div class="info-value" th:text="${javaVersion}">21.0.0</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">
+                    <span class="icon">💻</span>Sistema Operativo
+                </div>
+                <div class="info-value" th:text="${osName}">Windows 11</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">
+                    <span class="icon">🔢</span>Versión del SO
+                </div>
+                <div class="info-value" th:text="${osVersion}">10.0</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">
+                    <span class="icon">👤</span>Usuario
+                </div>
+                <div class="info-value" th:text="${userName}">DAW2</div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="/" class="btn-back">🏠 Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>
